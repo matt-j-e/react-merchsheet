@@ -44,14 +44,14 @@ const GigInput = () => {
 
   return (
     <div>
-      <Link to={`/tour/${tourId}`}>Tour index page</Link>
-      <h2>Stock / sales input</h2>
-      <h3>venue: {venue}</h3>
-      <h3>date: {date}</h3>
+      <Link className="nav-link" to={`/tour/${tourId}`}>Tour index page</Link>
+      <h2 className="heading">Stock / sales input</h2>
+      <h3><span className="gig-identifier">venue:</span> {venue}</h3>
+      <h3><span className="gig-identifier">date:</span> {date}</h3>
       <table>
       <thead>
         <tr>
-          <th>product</th>
+          <th className="left">product</th>
           <th>opening stock</th>
           <th>freebies</th>
           <th>paypal sales</th>

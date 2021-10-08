@@ -9,9 +9,9 @@ const GigInputCard = ({ id, date, venue }) => {
     <li>
       <span>{date} :: </span>
       <span>{venue}  </span>
-      <Link to={summaryPath}>financial summary</Link>
+      <Link className="button-link" to={summaryPath}>financial summary</Link>
       <span>&nbsp;</span>
-      <Link to={inputPath}>sales data input</Link>
+      <Link className="button-link" to={inputPath}>sales data input</Link>
     </li>
   )
 }

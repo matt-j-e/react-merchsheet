@@ -19,12 +19,12 @@ const SalesItemDataCard = (
     return (
       <tr>
         <td>{name}</td>
-        <td>{openingStock}</td>
-        <td>{numberFreebies}</td>
-        <td>{numberPaypalSales}</td>
-        <td>{closingStock}</td>
+        <td className="center">{openingStock}</td>
+        <td className="center">{numberFreebies}</td>
+        <td className="center">{numberPaypalSales}</td>
+        <td className="center">{closingStock}</td>
         <td>
-          <Link to={linkPath}>{linkText}</Link>
+          <Link className="button-link" to={linkPath}>{linkText}</Link>
         </td>
       </tr>
     )

@@ -7,10 +7,10 @@ const ProductSummaryCard = ({ product }) => {
   return (
     <tr>
       <td>{name}</td>
-      <td>{currencyFormat(price / 100)}</td>
-      <td>{currencyFormat(fatCatShare / 100)}</td>
-      <td>{chrisPercentage}%</td>
-      <td>{juliePercentage}%</td>
+      <td className="right">{currencyFormat(price / 100)}</td>
+      <td className="right">{currencyFormat(fatCatShare / 100)}</td>
+      <td className="center">{chrisPercentage}%</td>
+      <td className="center">{juliePercentage}%</td>
     </tr>
   )
 }

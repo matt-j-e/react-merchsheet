@@ -9,15 +9,15 @@ const GigSummaryCard = ({ salesItem }) => {
   return (
     <tr>
       <td>{item.name}</td>
-      <td>{item.numberSold}</td>
-      <td>{item.numberGifted}</td>
-      <td>{item.numberPaypal}</td>
-      <td>{currencyFormat(item.totalRevenue / 100)}</td>
-      <td>{currencyFormat(item.paypalCommission / 100)}</td>
-      <td>{currencyFormat(item.netRevenue / 100)}</td>
-      <td>{currencyFormat(item.chrisShare / 100)}</td>
-      <td>{currencyFormat(item.julieShare / 100)}</td>
-      <td>{currencyFormat(item.fatcatShare / 100)}</td>
+      <td className="center">{item.numberSold}</td>
+      <td className="center">{item.numberGifted}</td>
+      <td className="center">{item.numberPaypal}</td>
+      <td className="right">{currencyFormat(item.totalRevenue / 100)}</td>
+      <td className="right">{currencyFormat(item.paypalCommission / 100)}</td>
+      <td className="right">{currencyFormat(item.netRevenue / 100)}</td>
+      <td className="right">{currencyFormat(item.chrisShare / 100)}</td>
+      <td className="right">{currencyFormat(item.julieShare / 100)}</td>
+      <td className="right">{currencyFormat(item.fatcatShare / 100)}</td>
       
     </tr>
   )

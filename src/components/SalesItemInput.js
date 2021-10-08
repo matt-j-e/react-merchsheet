@@ -68,12 +68,13 @@ const SalesItemInput = () => {
 
   return (
     <div>
-      <Link to={`/gig/${gigId}/input`}>Gig data input</Link>
-      <h2>Stock / sales input for {productName}</h2>
-      <h3>venue: {venue}</h3>
-      <h3>date: {date}</h3>
+      <Link className="nav-link" to={`/gig/${gigId}/input`}>Gig data input</Link>
+      <h2 className="heading">Stock / sales input</h2>
+      <h3><span className="gig-identifier">venue:</span> {venue}</h3>
+      <h3><span className="gig-identifier">date:</span> {date}</h3>
 
       <form onSubmit={handleUpdateSalesItem}>
+        <h3 className="stock-heading">{productName}</h3>
 
         <div>
           <label htmlFor="openingStock">Opening stock</label>
@@ -124,7 +125,7 @@ const SalesItemInput = () => {
           </div>
 
           <div>
-            <button type="submit">Update item</button>
+            <button className="form-button" type="submit">Update item</button>
           </div>
 
       </form>

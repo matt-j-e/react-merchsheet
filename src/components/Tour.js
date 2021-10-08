@@ -95,11 +95,11 @@ const Tour = () => {
   };
 
   return (
-    <div>
-      <Link to="/">All tours</Link>
-      <h2>{tourName}</h2>
+    <div className="container">
+      <Link to="/" className="nav-link">All tours</Link>
+      <h2 className="heading">{tourName}</h2>
 
-      <h3>Gigs on this tour</h3>
+      <h3 className="sub-heading">Gigs on this tour</h3>
       <ul>
         {gigs.length === 0 ? (<li>No Gigs added yet</li>) : gigs.map((gig) => {
           return (
@@ -114,46 +114,48 @@ const Tour = () => {
       </ul>
 
       <form onSubmit={handleAddGig}>
-        <h3>Add a gig</h3>
+        <h3 className="form-heading">Add a gig</h3>
         
-        <label>Date
-          <input 
-            type="text"
-            name="date"
-            id="date"
-            placeholder="yyyy-mm-dd"
-            value={gigFields.date}
-            onChange={handleGigFieldChange}
-          />
-        </label>
+        <div>
+        <label>Date</label>
+        <input 
+          type="text"
+          name="date"
+          id="date"
+          placeholder="yyyy-mm-dd"
+          value={gigFields.date}
+          onChange={handleGigFieldChange}
+        />
+        </div>
 
-        <label>Venue
-          <input 
-            type="text"
-            name="venue"
-            id="venue"
-            placeholder="venue name"
-            value={gigFields.venue}
-            onChange={handleGigFieldChange}
-          />
-        </label>
+        <div>
+        <label>Venue</label>
+        <input 
+          type="text"
+          name="venue"
+          id="venue"
+          placeholder="venue name"
+          value={gigFields.venue}
+          onChange={handleGigFieldChange}
+        />
+        </div>
 
-        <button type="submit">Add tour</button>
+        <button className="form-button" type="submit">Add tour</button>
       </form>
 
       {/* 
       -------- PRODUCTS ---------
        */}
 
-      <h3>Products for sale on this tour</h3>
+      <h3 className="sub-heading">Products for sale on this tour</h3>
       <table>
         <thead>
         <tr>
-          <th>Description</th>
-          <th>Price (£)</th>
-          <th>Fatcat share (£)</th>
-          <th>Chris %</th>
-          <th>Julie %</th>
+          <th className="left">Description</th>
+          <th className="right">Price (£)</th>
+          <th className="right">Fatcat share (£)</th>
+          <th className="center">Chris %</th>
+          <th className="center">Julie %</th>
         </tr>
         </thead>
         <tbody>
@@ -175,7 +177,7 @@ const Tour = () => {
       </table>
       
       <form onSubmit={handleAddProduct}>
-        <h3>Add a product</h3>
+        <h3 className="form-heading">Add a product</h3>
 
         <div>
           <label htmlFor="name">Product Name</label>
@@ -226,7 +228,7 @@ const Tour = () => {
         </div>
 
         <div>
-          <label htmlFor="juliePercentage">Chris percentage</label>
+          <label htmlFor="juliePercentage">Julie percentage</label>
           <input
             type="number"
             name="juliePercentage"
@@ -238,7 +240,7 @@ const Tour = () => {
         </div>
 
         <div>
-        <button type="submit">Add product</button>
+        <button className="form-button" type="submit">Add product</button>
         </div>
 
       </form>

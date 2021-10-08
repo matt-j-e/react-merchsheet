@@ -32,8 +32,8 @@ const Tours = () => {
   };
 
   return (
-    <div>
-      <h2>Tours</h2>
+    <div className="container">
+      <h2 className="heading">Tours</h2>
       <ul>
       {tours.map(tour => {
         const path = "/tour/" + tour.id;
@@ -45,18 +45,21 @@ const Tours = () => {
       })}
       </ul>
       <form onSubmit={handleAddTour}>
-        <h3>Add a tour</h3>
-        <label>Tour name
-          <input 
-            type="text"
-            name="tourName"
-            id="tourName"
-            placeholder="eg. 2021 Autumn Tour"
-            value={newTourName.name}
-            onChange={handleFieldChange}
-          />
-        </label>
-        <button type="submit">Add tour</button>
+        <h3 className="form-heading">Add a tour</h3>
+
+        <div>
+        <label htmlFor="tourName">Tour name</label>
+        <input 
+          type="text"
+          name="tourName"
+          id="tourName"
+          placeholder="eg. 2021 Autumn Tour"
+          value={newTourName.name}
+          onChange={handleFieldChange}
+        />
+        </div>
+
+        <button className="form-button" type="submit">Add tour</button>
       </form>
     </div>
   );

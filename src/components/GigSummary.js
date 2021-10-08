@@ -38,24 +38,24 @@ const GigSummary = () => {
   const totals = salesTotalsCalculator(salesItems);
 
   return (
-    <div>
-      <Link to={`/tour/${tourId}`}>Tour index page</Link>
-      <h2>Sales summary</h2>
-      <h3>venue: {venue}</h3>
-      <h3>date: {date}</h3>
+    <div className="container">
+      <Link className="nav-link" to={`/tour/${tourId}`}>Tour index page</Link>
+      <h2 className="heading">Sales summary</h2>
+      <h3><span className="gig-identifier">venue:</span> {venue}</h3>
+      <h3><span className="gig-identifier">date:</span> {date}</h3>
       <table>
         <thead>
           <tr>
-            <th>product</th>
-            <th>sold</th>
-            <th>gifted</th>
-            <th>paypal</th>
-            <th>total revenue</th>
-            <th>paypal comm.</th>
-            <th>net revenue</th>
-            <th>chris</th>
-            <th>julie</th>
-            <th>fatcat</th>
+            <th className="left">product</th>
+            <th className="center">sold</th>
+            <th className="center">gifted</th>
+            <th className="center">paypal</th>
+            <th className="right">total revenue</th>
+            <th className="right">paypal comm.</th>
+            <th className="right">net revenue</th>
+            <th className="right">chris</th>
+            <th className="right">julie</th>
+            <th className="right">fatcat</th>
           </tr>
         </thead>
         <tbody>
@@ -69,17 +69,17 @@ const GigSummary = () => {
           })}
         </tbody>
         <tfoot>
-          <tr>
+          <tr className="totals">
             <td>totals</td>
-            <td>{totals.numberSold}</td>
-            <td>{totals.numberGifted}</td>
-            <td>{totals.numberPaypal}</td>
-            <td>{currencyFormat(totals.totalRevenue / 100)}</td>
-            <td>{currencyFormat(totals.paypalCommission / 100)}</td>
-            <td>{currencyFormat(totals.netRevenue / 100)}</td>
-            <td>{currencyFormat(totals.chrisShare / 100)}</td>
-            <td>{currencyFormat(totals.julieShare / 100)}</td>
-            <td>{currencyFormat(totals.fatcatShare / 100)}</td>
+            <td className="center">{totals.numberSold}</td>
+            <td className="center">{totals.numberGifted}</td>
+            <td className="center">{totals.numberPaypal}</td>
+            <td className="right">{currencyFormat(totals.totalRevenue / 100)}</td>
+            <td className="right">{currencyFormat(totals.paypalCommission / 100)}</td>
+            <td className="right">{currencyFormat(totals.netRevenue / 100)}</td>
+            <td className="right">{currencyFormat(totals.chrisShare / 100)}</td>
+            <td className="right">{currencyFormat(totals.julieShare / 100)}</td>
+            <td className="right">{currencyFormat(totals.fatcatShare / 100)}</td>
           </tr>
         </tfoot>
       </table>
