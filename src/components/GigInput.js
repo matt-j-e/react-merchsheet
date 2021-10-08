@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import ProductInputCard from "./ProductInputCard";
+import { useParams, Link } from "react-router-dom";
+// import ProductInputCard from "./ProductInputCard";
+import SalesItemDataCard from "./SalesItemDataCard";
 import getTourIdFromGig from "../requests/getTourIdFromGig";
 import getProductsByTour from "../requests/getProductsByTour";
 import getGigById from "../requests/getGigById";
@@ -43,9 +44,22 @@ const GigInput = () => {
 
   return (
     <div>
+      <Link to={`/tour/${tourId}`}>Tour index page</Link>
       <h2>Stock / sales input</h2>
       <h3>venue: {venue}</h3>
       <h3>date: {date}</h3>
+      <table>
+      <thead>
+        <tr>
+          <th>product</th>
+          <th>opening stock</th>
+          <th>freebies</th>
+          <th>paypal sales</th>
+          <th>closing stock</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
       {products.map((product) => {
         let id = 0;
         let openingStock = 0;
@@ -62,7 +76,8 @@ const GigInput = () => {
           }
         });
         return (
-          <ProductInputCard
+          // <ProductInputCard
+          <SalesItemDataCard
             key={product.id}
             gigId={gigId}
             productId={product.id}
@@ -75,6 +90,8 @@ const GigInput = () => {
           />
         )
       })}
+      </tbody>
+      </table>
     </div>
   )
 

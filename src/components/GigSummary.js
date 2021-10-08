@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import GigSummaryCard from "./GigSummaryCard";
 import getSalesItemsByGig from "../requests/getSalesItemsByGig";
+import getTourIdFromGig from "../requests/getTourIdFromGig";
 import salesTotalsCalculator from "../helpers/salesTotalsCalculator";
 import currencyFormat from "../helpers/currencyFormat";
 import getGigById from "../requests/getGigById";
@@ -11,6 +12,7 @@ const GigSummary = () => {
   const [salesItems, setSalesItems] = useState([]);
   const [venue, setVenue] = useState("");
   const [date, setDate] = useState("");
+  const [tourId, setTourId] = useState(0);
 
   const { gigId } = useParams();
 
@@ -27,10 +29,17 @@ const GigSummary = () => {
     })
   }, [gigId]);
 
+  useEffect(() => {
+    getTourIdFromGig(gigId).then((response) => {
+      setTourId(response.id);
+    })
+  }, [gigId]);
+
   const totals = salesTotalsCalculator(salesItems);
 
   return (
     <div>
+      <Link to={`/tour/${tourId}`}>Tour index page</Link>
       <h2>Sales summary</h2>
       <h3>venue: {venue}</h3>
       <h3>date: {date}</h3>

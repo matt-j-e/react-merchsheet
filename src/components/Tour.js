@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import GigInputCard from "./GigInputCard";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import getGigsByTour from "../requests/getGigsByTour";
 import getProductsByTour from "../requests/getProductsByTour";
 import getTourById  from "../requests/getTourById";
@@ -96,6 +96,7 @@ const Tour = () => {
 
   return (
     <div>
+      <Link to="/">All tours</Link>
       <h2>{tourName}</h2>
 
       <h3>Gigs on this tour</h3>

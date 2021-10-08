@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const getSalesItemsByGig = async (gigId) => {
-  const path = `${process.env.REACT_APP_BACKEND_API_URL}/sales/gig/${gigId}`;
+const getSalesItemById = async (id) => {
+  const path = `${process.env.REACT_APP_BACKEND_API_URL}/sales/item/${id}`;
   try {
     const response = await axios.get(path);
     return response;
@@ -11,4 +11,4 @@ const getSalesItemsByGig = async (gigId) => {
   }
 };
 
-export default getSalesItemsByGig;
+export default getSalesItemById;

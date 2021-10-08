@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Tour from "./Tour";
 import Tours from "./Tours";
 import GigInput from "./GigInput";
+import SalesItemInput from "./SalesItemInput";
 import "../styles/App.css";
 import GigSummary from "./GigSummary";
 import Header from "./Header";
@@ -20,6 +21,9 @@ function App() {
         </Route>
         <Route exact path='/gig/:gigId/input'>
           <GigInput />
+        </Route>
+        <Route exact path='/sales/:gigId/:productId/:itemId'>
+          <SalesItemInput />
         </Route>
         <Route exact path='/gig/:gigId/summary'>
           <GigSummary />

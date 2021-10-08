@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const getProductsByTour = async (tourId) => {
-  const path = `${process.env.REACT_APP_BACKEND_API_URL}/products/${tourId}`;
+  const path = `${process.env.REACT_APP_BACKEND_API_URL}/products/tour/${tourId}`;
   try {
     const response = await axios.get(path);
     return response;
