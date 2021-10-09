@@ -74,6 +74,7 @@ const Tour = () => {
         }
       ]);
     });
+    setGigFields(initialState.gigFields);
   };
 
   const handleAddProduct = (event) => {
@@ -140,7 +141,7 @@ const Tour = () => {
         />
         </div>
 
-        <button className="form-button" type="submit">Add tour</button>
+        <button className="form-button" type="submit">Add gig</button>
       </form>
 
       {/* 

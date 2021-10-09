@@ -34,4 +34,6 @@ body {
   font-family: 'Roboto', sans-serif;
   background-color: var(--primary-100);
   color: var(--gray-400);
+  max-width: 1080px;
+  margin: 0 auto;
 }
