@@ -41,7 +41,9 @@ const GigSummary = () => {
   const totals = salesTotalsCalculator(salesItems);
 
   const unhideVenueCutUpdateForm = () => {
-    document.getElementById("updateVenueCut").classList.remove("hidden");
+    const updateForm = document.getElementById("updateVenueCut");
+    updateForm.classList.remove("hidden");
+    updateForm.classList.add("visible");
   }
 
   const handleVenueCutFieldChange = (event) => {
@@ -53,7 +55,9 @@ const GigSummary = () => {
     updateGigVenueCut(gigId, venueCut).then(response => {
       console.log(response);
       if (response.status === 200) {
-        document.getElementById("updateVenueCut").classList.add("hidden");
+        const updateForm = document.getElementById("updateVenueCut");
+        updateForm.classList.add("hidden");
+        updateForm.classList.remove("visible");
       }
     });
   };

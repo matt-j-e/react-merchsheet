@@ -175,6 +175,12 @@ ul li a {
   color: var(--gray-100);
 }
 
+#updateVenueCut.visible {
+  opacity: 1;
+  transition: opacity 300ms;
+}
+
 #updateVenueCut.hidden {
-  display: none;
+  opacity: 0;
+  transition: opacity 300ms;
 }
