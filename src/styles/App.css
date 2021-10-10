@@ -82,15 +82,19 @@ table {
   /* padding: 0.5rem; */
   margin-top: 2rem;
   background-color: var(--black-trans-20);
+  border-collapse: collapse;
 }
 
 th {
   text-transform: uppercase;
+  color: var(--primary-200);
   border-bottom: 1px solid var(--gray-400);
+  padding: 0.4rem;
 }
 
 td {
-  padding: 0.2rem 0;
+  padding: 0.4rem;
+  border-bottom: 1px solid var(--black-trans-50);
 }
 
 .left {
@@ -112,7 +116,8 @@ td {
 }
 
 .totals td {
-  padding: 1rem 0;
+  padding: 0.7rem 0.4rem;
+  border: none;
 }
 
 ul {

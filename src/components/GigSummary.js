@@ -84,14 +84,14 @@ const GigSummary = () => {
             <td className="right">{currencyFormat(totals.fatcatShare / 100)}</td>
           </tr>
           <tr className="totals">
-            <td colSpan="6">venue cut</td>
+            <td colSpan="6">less: venue cut</td>
             <td className="right">{currencyFormat(venueCut / 100)}</td>
             <td className="right">{currencyFormat(venueCut / 200)}</td>
             <td className="right">{currencyFormat(venueCut / 200)}</td>
             <td></td>
           </tr>
           <tr className="totals">
-            <td colSpan="6"></td>
+            <td colSpan="6">Total split</td>
             <td className="right">{currencyFormat((totals.netRevenue - venueCut) / 100)}</td>
             <td className="right">{currencyFormat((totals.chrisShare - (venueCut / 2)) / 100)}</td>
             <td className="right">{currencyFormat((totals.julieShare - (venueCut / 2)) / 100)}</td>
