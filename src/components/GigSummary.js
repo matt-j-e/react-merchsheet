@@ -12,6 +12,7 @@ const GigSummary = () => {
   const [salesItems, setSalesItems] = useState([]);
   const [venue, setVenue] = useState("");
   const [date, setDate] = useState("");
+  const [venueCut, setVenueCut] = useState("");
   const [tourId, setTourId] = useState(0);
 
   const { gigId } = useParams();
@@ -26,6 +27,7 @@ const GigSummary = () => {
     getGigById(gigId).then((response) => {
       setVenue(response.data.venue);
       setDate(response.data.date);
+      setVenueCut(response.data.venueCut);
     })
   }, [gigId]);
 
@@ -79,6 +81,20 @@ const GigSummary = () => {
             <td className="right">{currencyFormat(totals.netRevenue / 100)}</td>
             <td className="right">{currencyFormat(totals.chrisShare / 100)}</td>
             <td className="right">{currencyFormat(totals.julieShare / 100)}</td>
+            <td className="right">{currencyFormat(totals.fatcatShare / 100)}</td>
+          </tr>
+          <tr className="totals">
+            <td colSpan="6">venue cut</td>
+            <td className="right">{currencyFormat(venueCut / 100)}</td>
+            <td className="right">{currencyFormat(venueCut / 200)}</td>
+            <td className="right">{currencyFormat(venueCut / 200)}</td>
+            <td></td>
+          </tr>
+          <tr className="totals">
+            <td colSpan="6"></td>
+            <td className="right">{currencyFormat((totals.netRevenue - venueCut) / 100)}</td>
+            <td className="right">{currencyFormat((totals.chrisShare - (venueCut / 2)) / 100)}</td>
+            <td className="right">{currencyFormat((totals.julieShare - (venueCut / 2)) / 100)}</td>
             <td className="right">{currencyFormat(totals.fatcatShare / 100)}</td>
           </tr>
         </tfoot>
