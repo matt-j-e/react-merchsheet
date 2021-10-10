@@ -6,6 +6,7 @@ import getTourIdFromGig from "../requests/getTourIdFromGig";
 import salesTotalsCalculator from "../helpers/salesTotalsCalculator";
 import currencyFormat from "../helpers/currencyFormat";
 import getGigById from "../requests/getGigById";
+import updateGigVenueCut from "../requests/updateGigVenueCut";
 
 const GigSummary = () => {
 
@@ -38,6 +39,24 @@ const GigSummary = () => {
   }, [gigId]);
 
   const totals = salesTotalsCalculator(salesItems);
+
+  const unhideVenueCutUpdateForm = () => {
+    document.getElementById("updateVenueCut").classList.remove("hidden");
+  }
+
+  const handleVenueCutFieldChange = (event) => {
+    setVenueCut(event.target.value);
+  }
+
+  const handleVenueCutUpdate = (event) => {
+    event.preventDefault();
+    updateGigVenueCut(gigId, venueCut).then(response => {
+      console.log(response);
+      if (response.status === 200) {
+        document.getElementById("updateVenueCut").classList.add("hidden");
+      }
+    });
+  };
 
   return (
     <div className="container">
@@ -84,7 +103,8 @@ const GigSummary = () => {
             <td className="right">{currencyFormat(totals.fatcatShare / 100)}</td>
           </tr>
           <tr className="totals">
-            <td colSpan="6">less: venue cut</td>
+            <td>less: venue cut</td>
+            <td colSpan="5"><button className="button-link" onClick={unhideVenueCutUpdateForm}>Update</button></td>
             <td className="right">{currencyFormat(venueCut / 100)}</td>
             <td className="right">{currencyFormat(venueCut / 200)}</td>
             <td className="right">{currencyFormat(venueCut / 200)}</td>
@@ -99,6 +119,27 @@ const GigSummary = () => {
           </tr>
         </tfoot>
       </table>
+
+      <form id="updateVenueCut" className="hidden" onSubmit={handleVenueCutUpdate}>
+          <h3 className="form-heading">Update venue cut</h3>
+
+          <div>
+            <label>New amount (in pence)</label>
+            <input
+              type="number"
+              name="venueCut"
+              id="venueCut"
+              placeholder="eg. enter £50 as 5000"
+              value={venueCut}
+              onChange={handleVenueCutFieldChange}
+            />
+          </div>
+
+          <div>
+          <button className="form-button" type="submit">Update amount</button>
+          </div>
+      </form>
+
     </div>
   )
 
