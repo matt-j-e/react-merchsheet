@@ -1,18 +1,44 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import currencyFormat from "../helpers/currencyFormat";
+import salesTotalsCalculator from "../helpers/salesTotalsCalculator";
+import getSalesItemsByGig from "../requests/getSalesItemsByGig";
 
-const GigInputCard = ({ id, date, venue }) => {
-  const summaryPath = "/gig/" + id + "/summary";
-  const inputPath = "/gig/" + id + "/input"
+const GigInputCard = ({ gig }) => {
+
+  const [salesItems, setSalesItems] = useState([]);
+
+  useEffect(() => {
+    getSalesItemsByGig(gig.id).then(response => {
+      setSalesItems(response.data)
+    });
+  }, [gig.id]);
+
+  const summaryPath = "/gig/" + gig.id + "/summary";
+  const inputPath = "/gig/" + gig.id + "/input"
+  const totals = salesTotalsCalculator(salesItems);
 
   return (
-    <li>
-      <span>{date} :: </span>
-      <span>{venue}  </span>
-      <Link className="button-link" to={summaryPath}>financial summary</Link>
-      <span>&nbsp;</span>
-      <Link className="button-link" to={inputPath}>sales data input</Link>
-    </li>
+    // <li>
+    //   <span>{date} :: </span>
+    //   <span>{venue}  </span>
+    //   <Link className="button-link" to={summaryPath}>financial summary</Link>
+    //   <span>&nbsp;</span>
+    //   <Link className="button-link" to={inputPath}>sales data input</Link>
+    // </li>
+    <tr>
+      <td>{gig.date}</td>
+      <td>{gig.venue}</td>
+      <td className="right">{currencyFormat(totals.totalRevenue / 100)}</td>
+      <td className="right">{currencyFormat(totals.paypalCommission / 100)}</td>
+      <td className="right">{currencyFormat(gig.venueCut / 100)}</td>
+      <td className="right">{currencyFormat((totals.netRevenue - gig.venueCut) / 100)}</td>
+      <td className="right">{currencyFormat((totals.chrisShare - (gig.venueCut / 2)) / 100)}</td>
+      <td className="right">{currencyFormat((totals.julieShare - (gig.venueCut / 2)) / 100)}</td>
+      <td className="right">{(currencyFormat(totals.fatcatShare / 100))}</td>
+      <td><Link className="button-link" to={summaryPath}>summary</Link></td>
+      <td><Link className="button-link" to={inputPath}>data</Link></td>
+    </tr>
   )
 }
 

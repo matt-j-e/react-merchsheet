@@ -101,18 +101,31 @@ const Tour = () => {
       <h2 className="heading">{tourName}</h2>
 
       <h3 className="sub-heading">Gigs on this tour</h3>
-      <ul>
+      <table>
+        <thead>
+          <tr>
+            <th className="left">date</th>
+            <th className="left">venue</th>
+            <th className="right">total revenue</th>
+            <th className="right">paypal comm.</th>
+            <th className="right">venue cut</th>
+            <th className="right">net revenue</th>
+            <th className="right">chris</th>
+            <th className="right">julie</th>
+            <th className="right">fatcat</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
         {gigs.length === 0 ? (<li>No Gigs added yet</li>) : gigs.map((gig) => {
           return (
             <GigInputCard
               key={gig.id}
-              id={gig.id}
-              date={gig.date}
-              venue={gig.venue}
+              gig={gig}
             />
           )
         })}
-      </ul>
+      </table>
 
       <form onSubmit={handleAddGig}>
         <h3 className="form-heading">Add a gig</h3>
