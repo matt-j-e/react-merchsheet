@@ -176,11 +176,13 @@ ul li a {
 }
 
 #updateVenueCut.visible {
+  visibility: visible;
   opacity: 1;
-  transition: opacity 300ms;
+  transition: visibility 0s linear 0s, opacity 400ms;
 }
 
 #updateVenueCut.hidden {
+  visibility: hidden;
   opacity: 0;
-  transition: opacity 300ms;
+  transition: visibility 0s linear 400ms, opacity 400ms;
 }
