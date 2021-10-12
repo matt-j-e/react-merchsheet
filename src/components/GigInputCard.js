@@ -19,13 +19,6 @@ const GigInputCard = ({ gig }) => {
   const totals = salesTotalsCalculator(salesItems);
 
   return (
-    // <li>
-    //   <span>{date} :: </span>
-    //   <span>{venue}  </span>
-    //   <Link className="button-link" to={summaryPath}>financial summary</Link>
-    //   <span>&nbsp;</span>
-    //   <Link className="button-link" to={inputPath}>sales data input</Link>
-    // </li>
     <tr>
       <td>{gig.date}</td>
       <td>{gig.venue}</td>

@@ -4,9 +4,12 @@ import { useParams, Link } from "react-router-dom";
 import getGigsByTour from "../requests/getGigsByTour";
 import getProductsByTour from "../requests/getProductsByTour";
 import getTourById  from "../requests/getTourById";
+import getSalesItemsByTour from "../requests/getSalesItemsByTour";
 import postGig from "../requests/postGig";
 import postProduct from "../requests/postProduct";
 import ProductSummaryCard from "./ProductSummaryCard";
+import currencyFormat from "../helpers/currencyFormat";
+import salesTotalsCalculator from "../helpers/salesTotalsCalculator";
 
 const Tour = () => {
 
@@ -29,6 +32,7 @@ const Tour = () => {
   const [tourName, setTourName] = useState("");
   const [gigFields, setGigFields] = useState(initialState.gigFields)
   const [productFields, setProductFields] = useState(initialState.productFields);
+  const [salesItems, setSalesItems] = useState([]);
 
   const { tourId } = useParams();
 
@@ -41,6 +45,9 @@ const Tour = () => {
     })
     getProductsByTour(tourId).then((response) => {
       setProducts(response.data);
+    })
+    getSalesItemsByTour(tourId).then((response) => {
+      setSalesItems(response.data);
     })
   }, [tourId]);
 
@@ -95,12 +102,17 @@ const Tour = () => {
     setProductFields(initialState.productFields);
   };
 
+  const totals = salesTotalsCalculator(salesItems);
+  const venueCutTotal = gigs.reduce((acc, gig) => {
+    return acc + gig.venueCut;
+  }, 0);
+
   return (
     <div className="container">
       <Link to="/" className="nav-link">All tours</Link>
       <h2 className="heading">{tourName}</h2>
-
       <h3 className="sub-heading">Gigs on this tour</h3>
+
       <table>
         <thead>
           <tr>
@@ -117,7 +129,8 @@ const Tour = () => {
             <th></th>
           </tr>
         </thead>
-        {gigs.length === 0 ? (<li>No Gigs added yet</li>) : gigs.map((gig) => {
+        <tbody>
+        {gigs.length === 0 ? (<tr><td>No Gigs added yet</td></tr>) : gigs.map((gig) => {
           return (
             <GigInputCard
               key={gig.id}
@@ -125,6 +138,19 @@ const Tour = () => {
             />
           )
         })}
+        </tbody>
+        <tfoot>
+          <tr className="totals">
+            <td colSpan="2">totals</td>
+            <td className="right">{currencyFormat(totals.totalRevenue / 100)}</td>
+            <td className="right">{currencyFormat(totals.paypalCommission / 100)}</td>
+            <td className="right">{currencyFormat(venueCutTotal / 100)}</td>
+            <td className="right">{currencyFormat((totals.netRevenue - venueCutTotal) / 100)}</td>
+            <td className="right">{currencyFormat((totals.chrisShare - (venueCutTotal / 2)) / 100)}</td>
+            <td className="right">{currencyFormat((totals.julieShare - (venueCutTotal / 2)) / 100)}</td>
+            <td className="right">{currencyFormat(totals.fatcatShare / 100)}</td>
+          </tr>
+        </tfoot>
       </table>
 
       <form onSubmit={handleAddGig}>
