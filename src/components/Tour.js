@@ -180,7 +180,11 @@ const Tour = () => {
         />
         </div>
 
-        <button className="form-button" type="submit">Add gig</button>
+        <button
+          disabled={!gigFields.date || !gigFields.venue}
+          className="form-button"
+          type="submit"
+        >Add gig</button>
       </form>
 
       {/* 
@@ -280,7 +284,17 @@ const Tour = () => {
         </div>
 
         <div>
-        <button className="form-button" type="submit">Add product</button>
+        <button
+          disabled={
+            !productFields.name ||
+            !productFields.price ||
+            !productFields.fatCatShare ||
+            !productFields.chrisPercentage ||
+            !productFields.juliePercentage
+          } 
+          className="form-button" 
+          type="submit"
+        >Add product</button>
         </div>
 
       </form>

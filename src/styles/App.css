@@ -173,6 +173,12 @@ ul li a {
   border-radius: 7px;
   background-color: var(--compliment-300);
   color: var(--gray-100);
+  cursor: pointer;
+}
+
+.form-button:disabled {
+  background-color: var(--gray-200);
+  cursor: inherit;
 }
 
 #updateVenueCut.visible {

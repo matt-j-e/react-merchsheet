@@ -5,7 +5,7 @@ import postTour from "../requests/postTour";
 
 const Tours = () => {
   const [tours, setTours] = useState([]);
-  const [newTourName, setNewTourName] = useState({name: ""});
+  const [newTour, setNewTour] = useState({name: ""});
 
   useEffect(() => {
     getTours().then(response => {
@@ -14,12 +14,12 @@ const Tours = () => {
   }, []);
 
   const handleFieldChange = (event) => {
-    setNewTourName({name: event.target.value});
+    setNewTour({name: event.target.value});
   }
 
   const handleAddTour = (event) => {
     event.preventDefault();
-    postTour(newTourName).then(response => {
+    postTour(newTour).then(response => {
       setTours((prev) => [
         ...prev, 
             {
@@ -28,7 +28,7 @@ const Tours = () => {
             }
       ]);
     });
-    setNewTourName({name: ""});
+    setNewTour({name: ""});
   };
 
   return (
@@ -54,12 +54,12 @@ const Tours = () => {
           name="tourName"
           id="tourName"
           placeholder="eg. 2021 Autumn Tour"
-          value={newTourName.name}
+          value={newTour.name}
           onChange={handleFieldChange}
         />
         </div>
 
-        <button className="form-button" type="submit">Add tour</button>
+        <button disabled={!newTour.name} className="form-button" type="submit">Add tour</button>
       </form>
     </div>
   );
