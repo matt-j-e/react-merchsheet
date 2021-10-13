@@ -181,14 +181,34 @@ ul li a {
   cursor: inherit;
 }
 
-#updateVenueCut.visible {
+#updateVenueCut,
+#addProductForm {
   visibility: visible;
   opacity: 1;
   transition: visibility 0s linear 0s, opacity 400ms;
 }
 
-#updateVenueCut.hidden {
+#updateVenueCut.hidden,
+#addProductForm.hidden {
   visibility: hidden;
   opacity: 0;
   transition: visibility 0s linear 400ms, opacity 400ms;
+}
+
+#addGigForm {
+  max-height: 14rem;
+  transition: max-height 400ms linear;
+}
+
+#addGigForm.hidden {
+  max-height: 0;
+  overflow-y: hidden;
+  border: none;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  transition: 
+    max-height 400ms linear,
+    padding-top 400ms linear,
+    padding-bottom 400ms linear;
 }

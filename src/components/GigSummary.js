@@ -43,7 +43,6 @@ const GigSummary = () => {
   const unhideVenueCutUpdateForm = () => {
     const updateForm = document.getElementById("updateVenueCut");
     updateForm.classList.remove("hidden");
-    updateForm.classList.add("visible");
   }
 
   const handleVenueCutFieldChange = (event) => {
@@ -57,7 +56,6 @@ const GigSummary = () => {
       if (response.status === 200) {
         const updateForm = document.getElementById("updateVenueCut");
         updateForm.classList.add("hidden");
-        updateForm.classList.remove("visible");
       }
     });
   };

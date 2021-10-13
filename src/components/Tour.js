@@ -33,6 +33,8 @@ const Tour = () => {
   const [gigFields, setGigFields] = useState(initialState.gigFields)
   const [productFields, setProductFields] = useState(initialState.productFields);
   const [salesItems, setSalesItems] = useState([]);
+  const [gigFormVisible, setGigFormVisible] = useState(false);
+  const [productFormVisible, setProductFormVisible] = useState(false);
 
   const { tourId } = useParams();
 
@@ -107,6 +109,22 @@ const Tour = () => {
     return acc + gig.venueCut;
   }, 0);
 
+  const toggleAddAGig = () => {
+    const gigForm = document.getElementById("addGigForm");
+    gigForm.classList.toggle("hidden");
+    setGigFormVisible(!gigFormVisible);
+  };
+
+  const gigFormButtonText = gigFormVisible ? "Hide form" : "Add gig";
+
+  const toggleAddProduct = () => {
+    const productForm = document.getElementById("addProductForm");
+    productForm.classList.toggle("hidden");
+    setProductFormVisible(!productFormVisible);
+  };
+
+  const productFormButtonText = productFormVisible ? "Hide form" : "Add product";  
+  
   return (
     <div className="container">
       <Link to="/" className="nav-link">All tours</Link>
@@ -149,11 +167,20 @@ const Tour = () => {
             <td className="right">{currencyFormat((totals.chrisShare - (venueCutTotal / 2)) / 100)}</td>
             <td className="right">{currencyFormat((totals.julieShare - (venueCutTotal / 2)) / 100)}</td>
             <td className="right">{currencyFormat(totals.fatcatShare / 100)}</td>
+            <td colSpan="2" className="right">
+              <button
+                id="showAddGigForm"
+                type="button"
+                className="button-link"
+                onClick={toggleAddAGig}
+              >{gigFormButtonText}</button>
+            </td>
           </tr>
         </tfoot>
       </table>
-
-      <form onSubmit={handleAddGig}>
+      
+      <form id="addGigForm" className="hidden" onSubmit={handleAddGig}>
+        
         <h3 className="form-heading">Add a gig</h3>
         
         <div>
@@ -217,10 +244,20 @@ const Tour = () => {
             /> 
           )
         })}
+        <tr>
+          <td colSpan="5" className="right">
+            <button
+                id="showAddProductForm"
+                type="button"
+                className="button-link"
+                onClick={toggleAddProduct}
+              >{productFormButtonText}</button>
+          </td>
+        </tr>
         </tbody>
       </table>
       
-      <form onSubmit={handleAddProduct}>
+      <form id="addProductForm" className="hidden" onSubmit={handleAddProduct}>
         <h3 className="form-heading">Add a product</h3>
 
         <div>
