@@ -244,7 +244,9 @@ const Tour = () => {
             /> 
           )
         })}
-        <tr>
+        </tbody>
+        <tfoot>
+        <tr className="totals">
           <td colSpan="5" className="right">
             <button
                 id="showAddProductForm"
@@ -254,7 +256,7 @@ const Tour = () => {
               >{productFormButtonText}</button>
           </td>
         </tr>
-        </tbody>
+        </tfoot>
       </table>
       
       <form id="addProductForm" className="hidden" onSubmit={handleAddProduct}>
